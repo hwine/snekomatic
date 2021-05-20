@@ -202,6 +202,7 @@ async def main(*, task_status=trio.TASK_STATUS_IGNORED):
     # On Heroku, have to bind to whatever $PORT says:
     # https://devcenter.heroku.com/articles/dynos#local-environment-variables
     port = os.environ.get("PORT", 8000)
+    print(f"hwine version running on port {port}")
     async with trio.open_nursery() as nursery:
         config = hypercorn.Config.from_mapping(
             bind=[f"0.0.0.0:{port}"],
